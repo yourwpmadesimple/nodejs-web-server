@@ -12,6 +12,8 @@ http
         </head>
         <body>
             <h1>Hello World</h1>
+            <p>method: ${req.method}</p>
+            <p>url: ${req.url} </p>
         </body>
         </html>
     `); // Send response back
