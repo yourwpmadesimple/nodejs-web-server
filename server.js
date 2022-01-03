@@ -1,5 +1,6 @@
 const { createServer } = require("http");
 const { createReadStream } = require("fs");
+const { decode } = require("querystring");
 
 const sendFile = (res, status, type, filePath) => {
   res.writeHead(status, { "Content-Type": type });
@@ -13,7 +14,8 @@ createServer((req, res) => {
       body += data;
     });
     req.on("end", () => {
-      console.log(body);
+      const { name, email, message } = decode(body);
+      console.log(` ${name} (${email}) ${message}`);
     });
   }
 
