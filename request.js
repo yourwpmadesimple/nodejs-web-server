@@ -1,30 +1,19 @@
-// Making a request with the request method
+// Making a request with the GET method
 const https = require("https");
 const fs = require("fs");
 
-const options = {
-  hostname: "en.wikipedia.org",
-  port: 443,
-  path: "/wiki/Snoopy",
-  method: "GET",
-};
+// First argument (url)
+// Second argument ()
+const request = https.get(
+  "https://en.wikipedia.org/wiki/Charlie_Brown",
+  (res) => {
+    let download = fs.createWriteStream("./Charlie_Brown.html"); // Wriatable file stream
+    res.pipe(download); // Readable file stream
 
-const request = https.request(options, (res) => {
-  let responseBody = "";
-  res.setEncoding("UTF-8");
-
-  res.on("data", (data) => {
-    console.log("----chunk----", data.length);
-    responseBody += data;
-  });
-
-  res.on("end", () => {
-    fs.writeFile("./snoopy.html", responseBody, (err) => {
-      if (err) {
-        throw err;
-      }
-      console.log("file downloaded");
+    res.on("end", () => {
+      // Listen for the end of download
+      console.log("Response Finished: Wiki page downloaded");
     });
-  });
-});
+  }
+);
 request.end();
