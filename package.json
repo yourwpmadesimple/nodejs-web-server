@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/yourwpmadesimple/nodejs-web-server/issues"
   },
-  "homepage": "https://github.com/yourwpmadesimple/nodejs-web-server#readme"
+  "homepage": "https://github.com/yourwpmadesimple/nodejs-web-server#readme",
+  "dependencies": {
+    "minimist": "^1.2.5"
+  }
 }
