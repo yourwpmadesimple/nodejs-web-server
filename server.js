@@ -2,9 +2,19 @@ const http = require("http");
 
 http
   .createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain" }); // Set Header information
+    res.writeHead(200, { "Content-Type": "text/html" }); // Set Header information
 
-    res.end("Hello World"); // Send response back
+    res.end(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Helllo World</title>
+        </head>
+        <body>
+            <h1>Hello World</h1>
+        </body>
+        </html>
+    `); // Send response back
   })
   .listen(3000);
 
