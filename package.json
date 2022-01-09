@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/yourwpmadesimple/nodejs-web-server#readme",
   "dependencies": {
+    "cowsay": "^1.5.0",
     "minimist": "^1.2.5",
+    "nodemon": "^2.0.15",
     "single-line-log": "^1.1.2",
     "tiny-timer": "^1.6.0"
   }

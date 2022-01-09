@@ -15,7 +15,7 @@ const count = parseInt(time);
 let message = "";
 
 for (let i = 0; i < count; i++) {
-  message += 1 + 1;
+  message += "*";
 }
 
 // setTimeout(() => {
