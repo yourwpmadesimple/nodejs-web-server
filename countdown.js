@@ -1,5 +1,6 @@
 const parseArgs = require("minimist");
 const { stdout: log } = require("single-line-log");
+const Timer = require("tiny-timer");
 const { time } = parseArgs(process.argv);
 
 if (!time) {
@@ -14,14 +15,21 @@ const count = parseInt(time);
 let message = "";
 
 for (let i = 0; i < count; i++) {
-  message += "*";
+  message += 1 + 1;
 }
 
-log(message);
+// setTimeout(() => {
+//   log("overwrites line");
+// }, 2000);
 
-setTimeout(() => {
-  log("overwrites line");
-}, 2000);
+const timer = new Timer({ interval: 1000 });
+
+timer.on("tick", () => {
+  log(message);
+  message = message.slice(1);
+});
+
+timer.start(count * 1000);
 
 //
 // Collect the time from argv
