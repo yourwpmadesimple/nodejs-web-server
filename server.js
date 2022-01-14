@@ -18,13 +18,23 @@ const save = () => {
   );
 };
 
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  console.log(`${req.method} request for ${req.url}`);
+  if (Object.keys(req.body).length) {
+    console.log(req.body);
+  }
+  next();
+});
+
 app.use(express.static("./client"));
 
 app.get("/dictionary", (req, res) => {
   res.json(skiTerms);
 });
 
-app.post("/dictionary", bodyParser.json(), (req, res) => {
+app.post("/dictionary", (req, res) => {
   skiTerms.push(req.body);
   save();
   res.json({
