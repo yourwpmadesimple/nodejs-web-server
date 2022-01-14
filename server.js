@@ -33,6 +33,17 @@ app.post("/dictionary", bodyParser.json(), (req, res) => {
   });
 });
 
+// Whatever terms are passed in the :term param: remove it because it will return false
+app.delete("/dictionary/:term", (req, res) => {
+  skiTerms = skiTerms.filter((def) => def.term !== req.params.term);
+  save();
+  res.json({
+    status: "sucess",
+    removed: req.params.term,
+    newLength: skiTerms.length,
+  });
+});
+
 app.listen(3000, () => {
   console.log(`Ski Dictionary at http://localhost:3000`);
 });
