@@ -6,7 +6,7 @@ wss.on("connection", (socket) => {
   socket.on("close", () => {
     console.log("socket disconnected");
   });
-
+  socket.send("Welcome to cyberchat, Wayne");
   console.log("New socket connected");
 });
 
